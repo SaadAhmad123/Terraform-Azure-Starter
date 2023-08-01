@@ -1,4 +1,4 @@
-# AWS Terraform Project Starter
+# Azure Terraform Project Starter
 
 Welcome to the AWS Terraform Project Starter, a codebase that provides you with the terraform code needed to initiate your project on the AWS Cloud. This codebase includes a Terraform remote backend along with the primary Terraform code. 
 
