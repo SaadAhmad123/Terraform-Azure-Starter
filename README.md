@@ -1,6 +1,6 @@
 # Azure Terraform Project Starter
 
-Welcome to the AWS Terraform Project Starter, a codebase that provides you with the terraform code needed to initiate your project on the AWS Cloud. This codebase includes a Terraform remote backend along with the primary Terraform code. 
+Welcome to the Azure Terraform Project Starter, a codebase that provides you with the terraform code needed to initiate your project on the Azure Cloud. This codebase includes a Terraform remote backend along with the primary Terraform code. 
 
 To get started, follow the steps outlined below.
 
@@ -9,7 +9,7 @@ To get started, follow the steps outlined below.
 ### Prerequisites
 
 - Ensure that you have Terraform installed in your local machine.
-- Knowledge about AWS and Terraform is helpful.
+- Knowledge about Azure and Terraform is helpful.
 
 ### Setup Instructions
 
@@ -69,7 +69,7 @@ Use the DockerFile in the code. At the moment, it is hosted on `rajeshsupreet/te
 
 ### Additional Resources
 
-Refer to the official [Terraform documentation](https://www.terraform.io/docs/index.html) and [AWS Documentation](https://aws.amazon.com/documentation/) for more information.
+Refer to the official [Terraform documentation](https://www.terraform.io/docs/index.html) and [Azure Documentation](https://azure.microsoft.com/) for more information.
 
 ## Feedback
 
