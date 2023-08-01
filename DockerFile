@@ -1,0 +1,31 @@
+# Pull base image.
+FROM --platform=linux/amd64 ubuntu:latest
+
+ARG AZURE_CLI_VERSION="2.49.0"
+ARG TERRAFORM_VERSION="1.4.6"
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update -y && \
+    apt-get install -y unzip curl lsb-release apt-transport-https ca-certificates gnupg && \
+    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get update -y && apt-get install -y nodejs && \
+    npm install -g azure-functions-core-tools@4.0.5198 --unsafe-perm true && \
+    apt-get -y install python3-pip && \
+    apt-get install unzip -y && \
+    apt-get install wget -y && \
+    pip3 install azure-cli==${AZURE_CLI_VERSION}
+
+################################
+# Install Terraform
+################################
+
+# Download terraform for linux
+RUN wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+# Unzip
+RUN unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+# Move to local bin
+RUN mv terraform /usr/local/bin/
+# Check that it's installed
+RUN terraform --version 

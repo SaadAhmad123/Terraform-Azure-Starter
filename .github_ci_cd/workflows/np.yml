@@ -1,0 +1,46 @@
+name: Deploy NonProd branch
+
+on:
+  push:
+    branches: [np]
+
+jobs:
+  deploy:
+    runs-on: rajeshsupreet/terraform-azure-cli:latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.9.0"
+
+      - name: Create temporary tfvars file
+        run: |
+          echo "client_id=\"$ARM_CLIENT_ID\"" >> ./terraform/terraform.tfvars
+          echo "client_secret=\"$ARM_CLIENT_SECRET\"" >> ./terraform/terraform.tfvars
+          echo "tenant_id=\"$ARM_TENANT_ID\"" >> ./terraform/terraform.tfvars
+          echo "subscription_id=\"$ARM_SUBSCRIPTION_ID\"" >> ./terraform/terraform.tfvars
+          echo "PROJECT_NAME=\"$PROJECT_NAME\"" >> ./terraform/terraform.tfvars
+          echo "SHORT_PROJECT_NAME=\"$SHORT_PROJECT_NAME\"" >> ./terraform/terraform.tfvars
+          echo "stage=\"$STAGE\"" >> ./terraform/terraform.tfvars
+        env:
+          ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+          ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+          PROJECT_NAME: "{{project_name}}"
+          SHORT_PROJECT_NAME: "{{short_project_name}}"
+          STAGE: "np"
+        shell: bash
+
+      - name: Terraform Init
+        working-directory: ./terraform
+        run: |
+          bash shell_run.sh -f "shell_tf_init.sh" -v "shell_tf_env.sh"
+
+      - name: Terraform Apply
+        working-directory: ./terraform
+        run: terraform apply -auto-approve
