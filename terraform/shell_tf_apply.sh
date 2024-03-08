@@ -45,4 +45,4 @@ export ARM_CLIENT_ID=$ARM_CLIENT_ID
 export ARM_CLIENT_SECRET=$ARM_CLIENT_SECRET
 export ARM_TENANT_ID=$ARM_TENANT_ID
 export ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID
-bash ./shell_run.sh -c "terraform destroy" -v "shell_tf_env.sh,shell_tf_init.sh"
+bash ./shell_run.sh -c "terraform apply" -v "shell_tf_env.sh,shell_tf_init.sh"
