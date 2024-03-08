@@ -1,9 +1,9 @@
-variable "SHORT_PROJECT_NAME" {
+variable "short_project_name" {
   description = "A short, max 5 letter, name of the project. It must be just lowercase letters"
   type        = string
 }
 
-variable "PROJECT_NAME" {
+variable "project_name" {
   description = "The name of the project"
   type        = string
 }
