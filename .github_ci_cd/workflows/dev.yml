@@ -25,8 +25,8 @@ jobs:
           echo "client_secret=\"$ARM_CLIENT_SECRET\"" >> ./terraform/terraform.tfvars
           echo "tenant_id=\"$ARM_TENANT_ID\"" >> ./terraform/terraform.tfvars
           echo "subscription_id=\"$ARM_SUBSCRIPTION_ID\"" >> ./terraform/terraform.tfvars
-          echo "PROJECT_NAME=\"$PROJECT_NAME\"" >> ./terraform/terraform.tfvars
-          echo "SHORT_PROJECT_NAME=\"$SHORT_PROJECT_NAME\"" >> ./terraform/terraform.tfvars
+          echo "project_name=\"$PROJECT_NAME\"" >> ./terraform/terraform.tfvars
+          echo "short_project_name=\"$SHORT_PROJECT_NAME\"" >> ./terraform/terraform.tfvars
           echo "stage=\"$STAGE\"" >> ./terraform/terraform.tfvars
         env:
           ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
