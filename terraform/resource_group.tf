@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "project" {
-  name     = "${local.short_project_name}_${local.stage}"
+  name     = local.name_prefix
   location = var.location
   tags     = local.tags
 }
