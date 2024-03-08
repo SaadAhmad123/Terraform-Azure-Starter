@@ -6,9 +6,3 @@ provider "azurerm" {
   skip_provider_registration = "true"
   features {}
 }
-
-resource "azurerm_resource_group" "tf_remote_backend" {
-  name     = var.SHORT_PROJECT_NAME
-  location = var.location
-  tags     = local.tags
-}
